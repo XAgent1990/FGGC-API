@@ -4,7 +4,12 @@
 	const jsonServer = require('json-server')
 	const puppeteer = require('puppeteer')
 
-	const browser = await puppeteer.launch()
+	const browser = await puppeteer.launch({
+	  args: [
+		'--no-sandbox',
+		'--disable-setuid-sandbox',
+	  ],
+	})
 	const page = await browser.newPage()
 	await page.setUserAgent('Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.17 (KHTML, like Gecko) Chrome/24.0.1312.52 Safari/537.17')
 
